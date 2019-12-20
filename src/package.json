@@ -1,0 +1,11 @@
+{
+  "name": "unsplash",
+  "version": "0.1.0",
+  "description": "unsplash",
+  "main": "app.js",
+  "author": "lclscofield",
+  "license": "MIT",
+  "dependencies": {
+    "weui-miniprogram": "^0.3.0"
+  }
+}

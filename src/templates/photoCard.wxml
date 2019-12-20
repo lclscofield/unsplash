@@ -1,0 +1,9 @@
+<template name="photoCard">
+  <view class="photo-card">
+    <view class="photo-author" wx:if="{{ user }}" data-type="author">
+      <image class="author-avatar" src="{{ user.profile_image.small }}" data-type="author" />
+      <view class="author-username" data-type="author">{{ user.username }}</view>
+    </view>
+    <image class="photo-main" src="{{ urls.regular }}" lazy-load="true" mode="widthFix" data-type="img" data-url="{{ urls.raw }}" />
+  </view>
+</template>

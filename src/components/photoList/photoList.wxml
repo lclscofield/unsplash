@@ -1,0 +1,5 @@
+<import src="../../templates/photoCard.wxml" />
+
+<view class="photo-list" bindtap="photoHandle">
+  <template is="photoCard" wx:for="{{photoList}}" wx:key="index" data="{{...item}}"/>
+</view>

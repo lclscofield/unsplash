@@ -1,0 +1,4 @@
+<!-- index.wxml -->
+<view class="home-container">
+  <photo-list wx:for="{{photos}}" wx:key="index" photo-list="{{item}}"></photo-list>
+</view>
