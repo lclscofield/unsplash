@@ -3,11 +3,41 @@ const api = require('../../api/index')
 Page({
   data: {
     page: 1,
-    photos: []
+    photos: [],
+    cache: new Set() // 存放 id
   },
 
+  // 页面加载
   async onLoad() {
-    this.loadPhotos()
+    this.init()
+  },
+
+  // 下拉刷新
+  async onPullDownRefresh() {
+    await this.init()
+    wx.stopPullDownRefresh()
+  },
+
+  // 上拉触底
+  async onReachBottom() {
+    let { page } = this.data
+    page++
+    this.setData({
+      page
+    })
+    const res = await this.loadPhotos()
+    if (res) {
+      this.setData({
+        [`photos[${page - 1}]`]: res
+      })
+    }
+  },
+
+  // 分享
+  onShareAppMessage() {
+    return {
+      title: 'Unsplash'
+    }
   },
 
   // 加载图片列表
@@ -16,13 +46,39 @@ Page({
     const res = await api.fetchPhoto('photos', {
       page
     })
-    if (res && res.result && res.result.length) {
-      const result = res.result
-      console.log(page, result)
+
+    if (page === 1) {
       this.setData({
-        [`photos[${page - 1}]`]: result
+        cache: new Set()
       })
     }
-    console.log(123, this.data.photos)
+    let { cache } = this.data
+    if (res && res.result && res.result.length) {
+      const result = res.result.filter(item => {
+        if (!cache.has(item.id)) {
+          cache.add(item.id)
+          this.setData({
+            cache
+          })
+          return true
+        }
+      })
+      console.log(123, page, result, this.data.photos)
+      return result
+    }
+  },
+
+  async init() {
+    let { page } = this.data
+    page = 1
+    this.setData({
+      page
+    })
+    const res = await this.loadPhotos()
+    if (res) {
+      this.setData({
+        photos: [res]
+      })
+    }
   }
 })

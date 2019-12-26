@@ -10,7 +10,10 @@ App({
   async onLaunch() {
     // 云环境初始化
     wx.cloud.init({
-      env: 'dev-gpyb0',
+      // dev 环境
+      // env: 'dev-gpyb0',
+      // prod 环境
+      env: 'prod-qkk2g',
       traceUser: true
     })
     // login
