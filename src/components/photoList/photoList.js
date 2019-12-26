@@ -17,16 +17,23 @@ Component({
   },
 
   methods: {
-    photoHandle(e) {
+    // 卡片点击事件分发
+    cardHandler(e) {
       console.log(e)
       const { target } = e
       const type = target.dataset.type
 
       if (type === 'img') {
-        wx.previewImage({
-          urls: target.dataset.url
-        })
+        this.photoHandler(target.dataset.url)
       }
+    },
+
+    // 图片点击事件
+    photoHandler(url) {
+      if (!url) return
+      wx.previewImage({
+        urls: [url]
+      })
     }
   }
 })

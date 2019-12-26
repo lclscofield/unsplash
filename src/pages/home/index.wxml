@@ -1,4 +1,5 @@
 <!-- index.wxml -->
 <view class="home-container">
   <photo-list wx:for="{{photos}}" wx:key="index" photo-list="{{item}}"></photo-list>
+  <mp-loading type="circle" show="{{loadMore}}"></mp-loading>
 </view>

@@ -1,4 +1,7 @@
 {
   "enablePullDownRefresh": true,
-  "onReachBottomDistance": 1000
+  "onReachBottomDistance": 1000,
+  "usingComponents": {
+    "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading"
+  }
 }

@@ -4,12 +4,17 @@ Page({
   data: {
     page: 1,
     photos: [],
-    cache: new Set() // 存放 id
+    cache: new Set(),// 存放 id
+    loadMore: false // 显示加载更多
   },
 
   // 页面加载
   async onLoad() {
-    this.init()
+    wx.showLoading({
+      title: '加载中...'
+    })
+    await this.init()
+    wx.hideLoading()
   },
 
   // 下拉刷新
@@ -23,12 +28,14 @@ Page({
     let { page } = this.data
     page++
     this.setData({
-      page
+      page,
+      loadMore: true
     })
     const res = await this.loadPhotos()
     if (res) {
       this.setData({
-        [`photos[${page - 1}]`]: res
+        [`photos[${page - 1}]`]: res,
+        loadMore: false
       })
     }
   },

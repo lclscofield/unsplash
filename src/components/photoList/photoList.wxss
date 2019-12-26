@@ -1,18 +1,21 @@
-.photo-card {}
+.photo-card {
+  margin-bottom: 20rpx;
+}
 
 .photo-author {
   display: flex;
-  padding: 10rpx 20rpx;
+  align-items: center;
+  padding: 20rpx 20rpx;
 }
 
 .author-avatar {
-  width: 60rpx;
-  height: 60rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
 }
 
 .author-username {
-  margin-left: 20rpx;
+  margin-left: 30rpx;
 }
 
 .photo-main {
