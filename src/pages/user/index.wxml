@@ -1,0 +1,15 @@
+<!-- index.wxml -->
+<view class="user-container">
+  <view class="user-card">
+    <view class="user-info" wx:if="{{ login }}">
+      <image class="user-avatar" src="{{ userInfo.avatarUrl }}" />
+      <view class="user-nickname">{{ userInfo.nickName }}</view>
+    </view>
+  </view>
+
+  <view class="menu" wx:if="{{ login }}">
+    <button class="menu-item menu-feedback" open-type="feedback">反馈意见</button>
+  </view>
+
+  <button class="login-btn" wx:else type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="login">登录</button>
+</view>

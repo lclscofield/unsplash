@@ -3,12 +3,9 @@
 
 page {
   background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
-button {
+/* button {
   background: initial;
 }
 
@@ -18,12 +15,4 @@ button:focus {
 
 button::after {
   border: none;
-}
-
-
-page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+} */

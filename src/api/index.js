@@ -1,8 +1,11 @@
 module.exports = {
   // 登录
-  login() {
+  login(param) {
     return wx.cloud.callFunction({
-      name: 'login'
+      name: 'login',
+      data: param || {
+        userInfo: null
+      }
     })
   },
 
