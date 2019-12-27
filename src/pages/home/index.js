@@ -4,8 +4,11 @@ Page({
   data: {
     page: 1,
     photos: [],
-    cache: new Set(),// 存放 id
-    loadMore: false // 显示加载更多
+    cache: new Set(), // 存放 id
+    loadMore: false, // 显示加载更多
+    hintType: '', // 提示类型 info、error、success
+    hintMsg: '', // 提示文本
+    retryNum: 0 // 重试次数，最多重试 5 次
   },
 
   // 页面加载
@@ -24,20 +27,8 @@ Page({
   },
 
   // 上拉触底
-  async onReachBottom() {
-    let { page } = this.data
-    page++
-    this.setData({
-      page,
-      loadMore: true
-    })
-    const res = await this.loadPhotos()
-    if (res) {
-      this.setData({
-        [`photos[${page - 1}]`]: res,
-        loadMore: false
-      })
-    }
+  onReachBottom() {
+    this.reachBottomHandle()
   },
 
   // 分享
@@ -60,21 +51,25 @@ Page({
       })
     }
     let { cache } = this.data
+
     if (res && res.result && res.result.length) {
+      // 过滤重复图片
       const result = res.result.filter(item => {
         if (!cache.has(item.id)) {
           cache.add(item.id)
+          // 初始化加载小图
+          item.url = item.urls.small
           this.setData({
             cache
           })
           return true
         }
       })
-      console.log(123, page, result, this.data.photos)
       return result
     }
   },
 
+  // 初始化
   async init() {
     let { page } = this.data
     page = 1
@@ -86,6 +81,42 @@ Page({
       this.setData({
         photos: [res]
       })
+    } else {
+      this.setData({
+        hintType: 'error',
+        hintMsg: '请求失败，请下拉重试'
+      })
     }
+  },
+
+  // 触底处理
+  async reachBottomHandle() {
+    let { page, retryNum } = this.data
+    // 最多重试 5 次
+    if (retryNum >= 5) return
+    page++
+    retryNum++
+    this.setData({
+      page,
+      loadMore: true,
+      retryNum: retryNum
+    })
+    const res = await this.loadPhotos()
+    if (res) {
+      this.setData({
+        [`photos[${page - 1}]`]: res,
+        loadMore: false
+      })
+    } else {
+      this.reachBottomHandle()
+    }
+  },
+
+  // 提示隐藏回调
+  hintHide () {
+    this.setData({
+      hintType: '',
+      hintMsg: ''
+    })
   }
 })

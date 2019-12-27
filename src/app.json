@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/home/index"
+    "pages/home/index",
+    "pages/user/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -8,6 +9,26 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Unsplash",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#333333",
+    "backgroundColor": "#F6F6F6",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "图片",
+        "iconPath": "images/icon_photo.png",
+        "selectedIconPath": "images/icon_photo_active.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "images/icon_my.png",
+        "selectedIconPath": "images/icon_my_active.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
