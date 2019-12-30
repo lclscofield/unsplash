@@ -16,6 +16,9 @@ Page({
     wx.showLoading({
       title: '加载中...'
     })
+    setTimeout(() => {
+      wx.hideLoading()
+    }, 10000)
     await this.init()
     wx.hideLoading()
   },
@@ -95,7 +98,6 @@ Page({
     // 最多重试 5 次
     if (retryNum >= 5) return
     page++
-    retryNum++
     this.setData({
       page,
       loadMore: true,
@@ -108,6 +110,7 @@ Page({
         loadMore: false
       })
     } else {
+      retryNum++
       this.reachBottomHandle()
     }
   },

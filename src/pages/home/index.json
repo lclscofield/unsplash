@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "onReachBottomDistance": 1000,
+  "onReachBottomDistance": 1200,
   "usingComponents": {
     "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading",
     "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips"

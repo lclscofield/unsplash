@@ -1,4 +1,7 @@
 {
   "navigationStyle": "custom",
-  "navigationBarTitleText": "Unsplash"
+  "navigationBarTitleText": "Unsplash",
+  "usingComponents": {
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+  }
 }
