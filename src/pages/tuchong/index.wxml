@@ -1,0 +1,9 @@
+<!-- index.wxml -->
+<view class="sf-container">
+  <view wx:for="{{ photos }}" wx:key="index" wx:for-item="sfList" wx:for-index="idx" data-idx="{{ idx }}" bindtap="viewImgs">
+    <image class="sf-img fade-in" wx:for="{{ sfList }}" wx:key="{{ item.id }}" mode="widthFix" lazy-load="{{ true }}" src="{{ item.titleUrl }}" data-index="{{ index }}" />
+  </view>
+
+  <mp-loading type="circle" show="{{ loadMore }}"></mp-loading>
+  <mp-toptips msg="{{ hintMsg }}" type="{{ hintType }}" show="{{ hintMsg }}" bindhide="hintHide"></mp-toptips>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "私房",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 1200,
+  "usingComponents": {
+    "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading",
+    "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips"
+  }
+}

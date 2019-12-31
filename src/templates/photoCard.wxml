@@ -4,6 +4,6 @@
       <image class="author-avatar" src="{{ user.profile_image.medium }}" data-type="author" />
       <view class="author-username" data-type="author">{{ user.username }}</view>
     </view>
-    <image class="photo-main" src="{{ url }}" mode="widthFix" data-type="img" data-url="{{ urls.regular }}" />
+    <image class="photo-main fade-in" src="{{ url }}" mode="widthFix" lazy-load="{{ true }}" data-type="img" data-url="{{ urls.regular }}" />
   </view>
 </template>

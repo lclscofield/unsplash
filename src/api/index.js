@@ -21,5 +21,26 @@ module.exports = {
         param
       }
     })
+  },
+
+  /**
+   * 获取图虫图片
+   */
+  fetchTCPhoto(param) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: 'https://api.tuchong.com/search/posts',
+        data: {
+          query: '私房',
+          ...param
+        },
+        success(res) {
+          resolve(res.data)
+        },
+        fail(err) {
+          reject(err)
+        }
+      })
+    })
   }
 }

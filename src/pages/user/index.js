@@ -12,7 +12,6 @@ Page({
   // 页面加载
   onLoad() {
     const userInfo = app.globalData.userInfo
-    console.log(userInfo)
     if (userInfo) {
       this.setData({
         userInfo
@@ -26,7 +25,6 @@ Page({
 
   // 登录
   async login(res) {
-    console.log(res)
     const userInfo = res.detail.userInfo
     if (userInfo) {
       const res = await api.login({ userInfo })
@@ -39,5 +37,12 @@ Page({
         })
       }
     }
+  },
+
+  // 跳转
+  goSf (e) {
+    wx.navigateTo({
+      url: '/pages/tuchong/index'
+    })
   }
 })
